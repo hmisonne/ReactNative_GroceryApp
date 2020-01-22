@@ -52,12 +52,14 @@ const AppNavigator = createSwitchNavigator(
 
 
 export default class App extends React.Component {
+
+
  render() {
     return (
     <Provider store={store}>
-
+    <PersistGate loading={null} persistor={persistor}>
       <AppNavigator/>
-
+      </PersistGate>
     </Provider>
     );
   }
@@ -66,11 +68,10 @@ export default class App extends React.Component {
 //  render() {
 //     return (
 //     <Provider store={store}>
-//     <PersistGate loading={null} persistor={persistor}>
+
 //       <AppNavigator/>
-//       </PersistGate>
+
 //     </Provider>
 //     );
 //   }
 // }
-

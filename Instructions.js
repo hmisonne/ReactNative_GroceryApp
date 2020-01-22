@@ -23,7 +23,7 @@ for (let i = 0; i < instructions.length; i++){
   instructionProcess.push(instructions[i].steps.map(processSteps))
 }
 export default instructionProcess
-console.log(instructionProcess)
+// console.log(instructionProcess)
 // export default instructions[0].steps.map(processSteps)
 
 // let instructionProcess = {}

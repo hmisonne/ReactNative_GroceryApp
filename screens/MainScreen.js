@@ -24,12 +24,14 @@ class MainScreen extends React.Component {
   }
 
   render(){
+    console.log(this.props.navigation.getParam('name'))
     return(
       <View style={styles.container}>
-
+      <Text>Hello {this.props.navigation.getParam('name')}</Text>
 
       <View style={styles.button}>
-        <Button title='Create/Continue your Shopping List'
+        <Button 
+          title='Create/Continue your Shopping List'
           onPress={this.goToShoppingList}/>
         </View>
 
