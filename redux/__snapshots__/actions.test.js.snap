@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`update food returns actions handles unit 1`] = `
+Object {
+  "payload": Object {
+    "amount": 1,
+    "name": "potatoe",
+    "unit": "ct",
+  },
+  "type": "ADD_ITEM",
+}
+`;
+
+exports[`update food returns actions returns action 1`] = `
+Object {
+  "payload": Object {
+    "amount": 1,
+    "name": "potatoe",
+  },
+  "type": "ADD_ITEM",
+}
+`;

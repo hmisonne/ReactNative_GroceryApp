@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`food reducer successfully adds new food 1`] = `
+Object {
+  "food": Array [
+    Object {
+      "amount": 1,
+      "name": "potatoe",
+      "unit": "ct",
+    },
+  ],
+  "groceryList": Array [],
+  "ingredients": Array [],
+  "recipe": Array [],
+  "recipeIngredients": Array [],
+}
+`;
