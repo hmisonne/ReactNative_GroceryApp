@@ -39,7 +39,7 @@ class RecipeDetailsScreen extends React.Component {
     this.setState({instructions})
   }
 
-  saveRecipe = () => {
+  addRecipe = () => {
     // Save Recipe Instructions
     const instructions = this.state.instructions;
     let recipeInstructions = [];
@@ -76,7 +76,28 @@ class RecipeDetailsScreen extends React.Component {
           recipeingredients: recipeingredients,
         })
 
-      this.setState({message: 'Recipe Saved!'})
+      this.setState({message: 'Recipe Saved!', 
+            typeAlert: 'alertSuccess'})
+  }
+
+  saveRecipe = () => {
+    // Check if recipe already saved
+    const recipe = this.props.recipe;
+    if (recipe.length === 0){
+      this.addRecipe()
+    }
+    else {
+      for (let i = 0; i < recipe.length; i++){
+        if (recipe[i].recipeID === this.props.navigation.getParam('id')){
+          this.setState({message: 'This recipe had already been saved!', 
+            typeAlert: 'alertDanger'})
+          break
+        }
+        else {
+          this.addRecipe()
+        }
+      }
+    }
 
   }
     
@@ -94,7 +115,7 @@ class RecipeDetailsScreen extends React.Component {
          })
         key ++
       } 
-      this.setState({message: 'ingredients added to list'})
+      this.setState({message: 'ingredients added to list', typeAlert: 'alertSuccess'})
 
 
     }
@@ -105,7 +126,7 @@ class RecipeDetailsScreen extends React.Component {
     return (
       <ScrollView>
         {this.state.message && (
-        <Text style= {styles.alertSuccess}>{this.state.message}</Text>
+        <Text style= {styles[this.state.typeAlert]}>{this.state.message}</Text>
         )}
       <Button title= 'Add to My Custom List' onPress={() => this.handleSubmit(formState)}/>
       <Button title= 'Save Recipe' onPress={this.saveRecipe}/>
@@ -143,6 +164,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   ingredients: state.ingredients,
+  recipe: state.recipe
 })
 
 
@@ -161,6 +183,10 @@ export default connect(mapStateToProps, mapDispatchToProps)(RecipeDetailsScreen)
 const styles = StyleSheet.create({
    alertSuccess: {
     backgroundColor: '#bbedbf',
+    textAlign: "center",
+  },
+  alertDanger: {
+    backgroundColor: '#f2b1ac',
     textAlign: "center",
   },
 });

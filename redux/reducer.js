@@ -55,7 +55,7 @@ const foodReducer = (state = [], action) => {
       )
     case EMPTY_FOOD_CAT:
       return state.filter(food =>
-       (food.type!== action.foodType))
+       (food.type !== action.foodType))
     case EMPTY_GROCERY_LIST:
       return []
     default:

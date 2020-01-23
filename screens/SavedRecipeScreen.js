@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Text, View, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import RowInstructions from '../RowInstructions'
 import {connect} from 'react-redux'
-import {removeRecipe} from '../redux/actions'
+import {removeRecipe, resetRecipeList} from '../redux/actions'
 import instructionsPrepared from '../Instructions'
 
 
@@ -24,9 +24,7 @@ class SavedRecipeScreen extends React.Component {
   goToBrowseRecipe = () => {
     this.props.navigation.push('RecipeList')
   }
-  render () {
-    console.log(this.props.recipe)
-    
+  render () {    
     return (
 
       <ScrollView style = {styles.container}>
@@ -42,7 +40,8 @@ class SavedRecipeScreen extends React.Component {
           this.props.recipe.map(recipe =>
             <TouchableOpacity
               style = {styles.item}
-              onPress = {() => this.goToRecipeDetails(recipe)}>
+              onPress = {() => this.goToRecipeDetails(recipe)}
+              key = {recipe.key}>
                 <Text style = {styles.title}>{recipe.recipeName}</Text>
                 <View style={styles.rightContainer}>
                   <Button color="#ff5c5c" 
@@ -92,7 +91,7 @@ const styles = StyleSheet.create({
 });
 
 
-export default connect(mapStateToProps, {removeRecipe: removeRecipe})(SavedRecipeScreen)
+export default connect(mapStateToProps, {removeRecipe: removeRecipe, resetRecipeList: resetRecipeList})(SavedRecipeScreen)
 
 // {(this.props.recipe !== '') && (this.props.recipe.map(instructionBlock => 
 //        instructionBlock.map(instruction =>
