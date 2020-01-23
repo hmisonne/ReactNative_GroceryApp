@@ -34,17 +34,15 @@ class SavedRecipeDetailsScreen extends React.Component {
 
     
   render () {
-    const recipeInstructions = this.props.recipe.filter(recipe => 
-      recipe.recipeID === this.props.navigation.getParam('recipeID'))
-    const recipeIngredients = this.props.recipeIngredients.filter(food => 
-      food.recipeID === this.props.navigation.getParam('recipeID'))
+    const recipeInstructions = this.props.navigation.getParam('recipeInstructions')
+    const recipeIngredients = this.props.navigation.getParam('recipeingredients')
+    
     return (
       <ScrollView style = {styles.container  }>
       {
         this.state.message && (
           <Text style = {styles.alertSuccess}>{this.state.message}</Text>)
       }
-      
       <Text style = {styles.title} >Ingredients:</Text>
       {recipeIngredients.map(ingredient =>
       <Text 
@@ -54,7 +52,7 @@ class SavedRecipeDetailsScreen extends React.Component {
         </Text>
       )
       }
-      <Text style = {styles.title}>Instructions:</Text>
+       <Text style = {styles.title}>Instructions:</Text>
       {recipeInstructions.map(instruction =>
         <RowInstructions 
           instruction={instruction}
@@ -62,6 +60,7 @@ class SavedRecipeDetailsScreen extends React.Component {
         />
       )
       }
+
       <Button title="Load" onPress={() => this.handleSubmit(recipeIngredients)}/>
       </ScrollView>
     )
@@ -93,16 +92,3 @@ const styles = StyleSheet.create({
 
 
 export default connect(mapStateToProps, {addFood: addFood})(SavedRecipeDetailsScreen)
-
-// {(this.props.recipe !== '') && (this.props.recipe.map(instructionBlock => 
-//        instructionBlock.map(instruction =>
-//         <RowInstructions 
-//           instruction={instruction}
-//           key={instruction.key}
-//         />
-//       ))
-//       )
-//       }
-
-
-

@@ -22,6 +22,7 @@ const RowRecipe = (props) =>
       <Text style={styles.title}>{props.title}</Text>
       <Text >Ready in: {props.readyInMinutes}min</Text>
       <Text >Servings: {props.servings}</Text>
+        
     </TouchableOpacity>
 );
 

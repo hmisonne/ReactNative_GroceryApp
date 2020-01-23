@@ -23,7 +23,7 @@ export const ING_RQ_REJECTED = 'ING_RQ_REJECTED'
 export const ADD_RECIPE = 'ADD_RECIPE'
 
 export const ADD_RECIPE_INGREDIENTS = 'ADD_RECIPE_INGREDIENTS'
-
+export const REMOVE_RECIPE = 'REMOVE_RECIPE'
 
 
 
@@ -87,6 +87,11 @@ export const emptyGroceryList = update => ({
 export const addRecipe = update => ({
   type: ADD_RECIPE,
   payload: update,
+})
+
+export const removeRecipe = key => ({
+  type: REMOVE_RECIPE,
+  key,
 })
 
 export const addRecipeIngredients = update => ({

@@ -2,17 +2,9 @@ import React from 'react';
 import { Button, Text, View, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import RowInstructions from '../RowInstructions'
 import {connect} from 'react-redux'
+import {removeRecipe} from '../redux/actions'
 import instructionsPrepared from '../Instructions'
-// import Alert from 'react-bootstrap'
 
-let key = 1;
-function removeDuplicates(array, key) {
-    return array.filter((obj, index, self) =>
-        index === self.findIndex((el) => (
-            el[key] === obj[key]
-        ))
-    )
-}
 
 class SavedRecipeScreen extends React.Component {
   static navigationOptions = ({navigation}) => {
@@ -33,16 +25,12 @@ class SavedRecipeScreen extends React.Component {
     this.props.navigation.push('RecipeList')
   }
   render () {
-    let recipeNameList = []
-    this.props.recipe.map(instruction => {
-      recipeNameList.push({recipeID: instruction.recipeID, recipeName: instruction.recipeName, key: key})
-    })
-    recipeNameList = removeDuplicates(recipeNameList, 'recipeID')
+    console.log(this.props.recipe)
     
     return (
 
       <ScrollView style = {styles.container}>
-      {(recipeNameList.length === 0)? 
+      {(this.props.recipe.length === 0)? 
         (
           <View>
           <Text style = {styles.title}>No Recipe Saved yet</Text>
@@ -51,11 +39,16 @@ class SavedRecipeScreen extends React.Component {
         )
         :
         (
-          recipeNameList.map(recipe =>
+          this.props.recipe.map(recipe =>
             <TouchableOpacity
               style = {styles.item}
               onPress = {() => this.goToRecipeDetails(recipe)}>
                 <Text style = {styles.title}>{recipe.recipeName}</Text>
+                <View style={styles.rightContainer}>
+                  <Button color="#ff5c5c" 
+                    title='Remove'
+                    onPress={() => this.props.removeRecipe(recipe.key)}/>
+                </View>
             </TouchableOpacity>
           )
         )
@@ -90,11 +83,16 @@ const styles = StyleSheet.create({
     padding: 20,
     marginVertical: 8,
   },
+  rightContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
 
 });
 
 
-export default connect(mapStateToProps)(SavedRecipeScreen)
+export default connect(mapStateToProps, {removeRecipe: removeRecipe})(SavedRecipeScreen)
 
 // {(this.props.recipe !== '') && (this.props.recipe.map(instructionBlock => 
 //        instructionBlock.map(instruction =>

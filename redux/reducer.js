@@ -17,7 +17,9 @@ import {ADD_ITEM,
   ING_RQ_REJECTED,
   ADD_GROCERY_LIST,
   REMOVE_GROCERY_LIST,
-  ADD_RECIPE_INGREDIENTS} from './actions'
+  ADD_RECIPE_INGREDIENTS,
+  REMOVE_RECIPE
+} from './actions'
 
 
 const foodReducer = (state = [], action) => {
@@ -80,19 +82,14 @@ const recipeReducer = (state= [], action) => {
       return []
     case ADD_RECIPE:
       return [...state, action.payload]
+    case REMOVE_RECIPE:
+      return state.filter(recipe =>
+       (recipe.key !== action.key))
     default:
       return state
   }
 }
 
-const recipeIngredientsReducer = (state= [], action) => {
-  switch (action.type) {
-    case ADD_RECIPE_INGREDIENTS:
-      return [...state, action.payload]
-    default:
-      return state
-  }
-}
 
 const ingredientReducer = (state= [], action) => {
   switch (action.type) {
@@ -120,7 +117,6 @@ const ingredientReducer = (state= [], action) => {
 const reducer = combineReducers({
   food: foodReducer,
   recipe: recipeReducer,
-  recipeIngredients : recipeIngredientsReducer,
   ingredients: ingredientReducer,
   groceryList: groceryListReducer,
 })

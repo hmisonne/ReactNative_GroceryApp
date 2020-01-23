@@ -15,7 +15,6 @@ let key = 1000
 class RecipeDetailsScreen extends React.Component {
     static propTypes = {
       ingredients: PropTypes.array,
-      message: PropTypes.string,
       toggleItem: PropTypes.func,
       addFood: PropTypes.func,
     }
@@ -42,33 +41,41 @@ class RecipeDetailsScreen extends React.Component {
 
   saveRecipe = () => {
     // Save Recipe Instructions
-    const instructionsRecipe = this.state.instructions;
-    for (let i = 0; i < instructionsRecipe.length; i++){
-      for (let j = 0; j < instructionsRecipe[i].length; j++){
-        this.props.addRecipe({
-          number: instructionsRecipe[i][j].number,
-          step: instructionsRecipe[i][j].step,
-          key: instructionsRecipe[i][j].key,
-          recipeName: this.props.navigation.getParam('title'),
-          recipeID: this.props.navigation.getParam('id'),
+    const instructions = this.state.instructions;
+    let recipeInstructions = [];
+    for (let i = 0; i < instructions.length; i++){
+      for (let j = 0; j < instructions[i].length; j++){
+        recipeInstructions.push({
+          number: instructions[i][j].number,
+          step: instructions[i][j].step,
+          key: instructions[i][j].key,
         })
       }
     }
     // Save Recipe Ingredients
-    const ingredientsRecipe = this.props.ingredients;
-      for (let i = 0; i< ingredientsRecipe.length; i++){
-        this.props.addRecipeIngredients({
+    const ingredients = this.props.ingredients;
+    let recipeingredients = [];
+      for (let i = 0; i< ingredients.length; i++){
+        recipeingredients.push({
         key: key, 
-        name: ingredientsRecipe[i].name, 
+        name: ingredients[i].name, 
         type: 'custom',
-        amount: ingredientsRecipe[i].amount,
-        unit: ingredientsRecipe[i].unit,
+        amount: ingredients[i].amount,
+        unit: ingredients[i].unit,
         checked: false,
         ref: this.props.navigation.getParam('title'),
-        recipeID: this.props.navigation.getParam('id'),
          })
         key ++
-      } 
+      }
+    // Save Recipe
+    this.props.addRecipe({
+          key: key,
+          recipeName: this.props.navigation.getParam('title'),
+          recipeID: this.props.navigation.getParam('id'),
+          recipeInstructions: recipeInstructions,
+          recipeingredients: recipeingredients,
+        })
+
       this.setState({message: 'Recipe Saved!'})
 
   }
@@ -136,7 +143,6 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   ingredients: state.ingredients,
-  message: state.message
 })
 
 
