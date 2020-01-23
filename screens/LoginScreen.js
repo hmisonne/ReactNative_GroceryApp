@@ -31,7 +31,6 @@ signIn = async () => {
     return(
       <View style={styles.container}>
         <Text style={styles.paragraph}>Login to build your Grocery List</Text>
-        <Text style={styles.header}>Sign In With Google</Text>
         <Button title="Sign in with Google" 
           onPress={() => this.signIn()} />
       </View>
