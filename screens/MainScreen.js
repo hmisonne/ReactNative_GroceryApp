@@ -24,7 +24,7 @@ class MainScreen extends React.Component {
   }
 
   render(){
-    console.log(this.props.navigation.getParam('name'))
+    // console.log(this.props.navigation.getParam('name'))
     return(
       <View style={styles.container}>
 

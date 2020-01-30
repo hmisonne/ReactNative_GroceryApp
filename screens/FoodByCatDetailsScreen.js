@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   },
     moreIcon :{
       alignItems: 'flex-end',
-      margin: 20,
+      margin: 7,
 
   },
   modal: {

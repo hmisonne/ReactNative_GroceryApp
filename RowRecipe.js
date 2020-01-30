@@ -15,7 +15,8 @@ import Constants from 'expo-constants';
 
 const RowRecipe = (props) => 
 (
-    <TouchableOpacity style={styles.item}
+    <TouchableOpacity 
+    style={styles.item}
     onPress = {() => props.onSelectRecipe(props)}
     >
       

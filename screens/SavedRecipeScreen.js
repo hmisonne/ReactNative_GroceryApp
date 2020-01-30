@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Text, View, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { Button, Text, View, Image, StyleSheet, ScrollView, TouchableOpacity, Modal, Ionicons } from 'react-native';
 import RowInstructions from '../RowInstructions'
 import {connect} from 'react-redux'
 import {removeRecipe, resetRecipeList} from '../redux/actions'
@@ -12,6 +12,9 @@ class SavedRecipeScreen extends React.Component {
       headerTitle: 'My Saved Recipes',
     };
   }
+  state = {
+    isModalVisible: false
+  };
   goToRecipe = () => {
     this.props.navigation.push('RecipeList')
   }
@@ -24,10 +27,11 @@ class SavedRecipeScreen extends React.Component {
   goToBrowseRecipe = () => {
     this.props.navigation.push('RecipeList')
   }
-  render () {    
+  render () {
+  console.log(this.props.recipe)   
     return (
-
-      <ScrollView style = {styles.container}>
+      <View style={styles.container}>
+      <ScrollView>
       {(this.props.recipe.length === 0)? 
         (
           <View>
@@ -52,8 +56,12 @@ class SavedRecipeScreen extends React.Component {
           )
         )
       }
+
+      
       </ScrollView>
-    
+
+
+      </View>
     )
       
       
@@ -70,7 +78,6 @@ const mapStateToProps = state => ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: 5,
   },
 
   title: {
@@ -102,3 +109,4 @@ export default connect(mapStateToProps, {removeRecipe: removeRecipe, resetRecipe
 //       ))
 //       )
 //       }
+

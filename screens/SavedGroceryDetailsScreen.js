@@ -27,7 +27,7 @@ class SavedGroceryDetailsScreen extends React.Component {
 
  render(){
       const selectedGroceryList = this.props.navigation.getParam('food')
-
+      
      return(
       <View style={styles.container}>
       <ScrollView>

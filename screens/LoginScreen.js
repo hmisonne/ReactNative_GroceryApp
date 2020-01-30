@@ -15,7 +15,7 @@ signIn = async () => {
       })
       if (result.type === "success") {
         this.props.navigation.navigate('Main',{name: result.user.name})
-        console.log(result.user)
+        // console.log(result.user)
       } else {
         console.log("cancelled")
       }

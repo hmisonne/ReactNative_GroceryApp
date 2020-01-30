@@ -13,21 +13,21 @@ import PropTypes from 'prop-types'
 
 let key = 1000
 class RecipeDetailsScreen extends React.Component {
-    static propTypes = {
+  static propTypes = {
       ingredients: PropTypes.array,
       toggleItem: PropTypes.func,
       addFood: PropTypes.func,
-    }
+  }
     
-    static navigationOptions = ({navigation}) => {
-    return {
-      headerTitle: navigation.getParam('title'),
-      headerRight: ''}
-    }
+  static navigationOptions = ({navigation}) => {
+      return {
+        headerTitle: navigation.getParam('title'),
+        headerRight: ''}
+  }
 
-    state ={
+  state ={
       instructions: [[]],
-    }
+  }
 
   componentDidMount() {
     const recipeID = this.props.navigation.getParam('id')
@@ -83,6 +83,7 @@ class RecipeDetailsScreen extends React.Component {
   saveRecipe = () => {
     // Check if recipe already saved
     const recipe = this.props.recipe;
+    let recipeAlreadySaved = false
     if (recipe.length === 0){
       this.addRecipe()
     }
@@ -91,34 +92,36 @@ class RecipeDetailsScreen extends React.Component {
         if (recipe[i].recipeID === this.props.navigation.getParam('id')){
           this.setState({message: 'This recipe had already been saved!', 
             typeAlert: 'alertDanger'})
+          recipeAlreadySaved = true
           break
         }
-        else {
-          this.addRecipe()
-        }
       }
+      if (!recipeAlreadySaved) {
+        this.addRecipe()
+      }
+      
     }
 
   }
     
-    handleSubmit = (formState) => {
-      for (let i = 0; i< formState.length; i++){
-        this.props.addFood({
-        key: key, 
-        name: formState[i].name, 
-        type: 'custom',
-        amount: formState[i].amount,
-        unit: formState[i].unit,
-        checked: false,
-        ref: this.props.navigation.getParam('title'),
-        recipeID: this.props.navigation.getParam('id'),
-         })
-        key ++
-      } 
-      this.setState({message: 'ingredients added to list', typeAlert: 'alertSuccess'})
+  handleSubmit = (formState) => {
+    for (let i = 0; i< formState.length; i++){
+      this.props.addFood({
+      key: key, 
+      name: formState[i].name, 
+      type: 'custom',
+      amount: formState[i].amount,
+      unit: formState[i].unit,
+      checked: false,
+      ref: this.props.navigation.getParam('title'),
+      recipeID: this.props.navigation.getParam('id'),
+       })
+      key ++
+    } 
+    this.setState({message: 'ingredients added to list', typeAlert: 'alertSuccess'})
 
 
-    }
+  }
       
     
   render () {
@@ -170,13 +173,6 @@ const mapStateToProps = state => ({
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipeDetailsScreen)
-
-//     let instructionProcess = []
-//     for (let i = 0; i < steps.length; i++){
-//   instructionProcess.push(steps[i].steps.map(processSteps))
-// }
-//     console.log('api response')
-//     console.log(instructionProcess)
 
 
 
