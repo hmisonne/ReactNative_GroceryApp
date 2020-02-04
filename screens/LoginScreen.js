@@ -6,25 +6,26 @@ import * as Google from "expo-google-app-auth";
 export default class LoginScreen extends React.Component {
 
 
-signIn = async () => {
-    try {
-      const result = await Google.logInAsync({
-        androidClientId: '1012947899839-c3fe21gjtrfb0006aqtfb21pq736ksj6.apps.googleusercontent.com',
-        iosClientId:'',
-        scopes: ["profile", "email"]
-      })
-      if (result.type === "success") {
-        this.props.navigation.navigate('Main',{name: result.user.name})
-        // console.log(result.user)
-      } else {
-        console.log("cancelled")
-      }
-    } catch (e) {
-          console.log("error", e)
-        }
+// signIn = async () => {
+//     try {
+//       const result = await Google.logInAsync({
+//         androidClientId: '1012947899839-c3fe21gjtrfb0006aqtfb21pq736ksj6.apps.googleusercontent.com',
+//         iosClientId:'',
+//         scopes: ["profile", "email"]
+//       })
+//       if (result.type === "success") {
+//         this.props.navigation.navigate('Main',{name: result.user.name})
+//         // console.log(result.user)
+//       } else {
+//         console.log("cancelled")
+//       }
+//     } catch (e) {
+//           console.log("error", e)
+//         }
+//     }
+signIn =() => {
+        this.props.navigation.navigate('Main')
     }
-
-
 
 
   render(){
