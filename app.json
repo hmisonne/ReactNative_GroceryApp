@@ -4,11 +4,14 @@
     "slug": "shopping_list",
     "privacy": "public",
     "sdkVersion": "36.0.0",
+    "description":"Build a grocery list based on food category and track the status. Find recipe and add ingredients to shopping list",
+    "githubUrl":"https://github.com/hmisonne/GroceryApp.git",
     "platforms": [
       "ios",
       "android",
       "web"
     ],
+    "icon":"",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -23,8 +26,12 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "android": {
+      "package": "com.GroceryApp.GroceryAppTool",
+      "versionCode": 1
+    },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
     }
   }
 }

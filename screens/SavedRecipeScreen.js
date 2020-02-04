@@ -28,7 +28,6 @@ class SavedRecipeScreen extends React.Component {
     this.props.navigation.push('RecipeList')
   }
   render () {
-  console.log(this.props.recipe)   
     return (
       <View style={styles.container}>
       <ScrollView>

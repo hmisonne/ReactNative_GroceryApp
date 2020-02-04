@@ -10,6 +10,7 @@ const FlatListRecipes = props => {
 	<FlatList 
     renderItem={renderItem} 
     data={props.recipes}
+    keyExtractor={ (item, index) => index.toString() }
      />
   )
 }
