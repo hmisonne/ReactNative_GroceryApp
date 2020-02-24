@@ -32,12 +32,13 @@ signIn =() => {
     return(
       <View style={styles.container}>
         <Text style={styles.paragraph}>Login to build your Grocery List</Text>
-        <Button title="Sign in with Google" 
+        <Button title="Sign in" 
           onPress={() => this.signIn()} />
       </View>
     )
   }
 }
+// <Button title="Sign in with Google" 
 
 const styles = StyleSheet.create({
   container: {
