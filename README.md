@@ -21,4 +21,9 @@ Install Expo CLI by running the following command:
 
 **STEP 3 - Running the React Native application on Expo**
 
-`expo start`
+Create a pull request, and go to the root of the copied directory on your command line. 
+
+`
+$cd GroceryApp
+$expo start
+`
