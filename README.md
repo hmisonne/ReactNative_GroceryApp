@@ -23,7 +23,7 @@ Install Expo CLI by running the following command:
 
 Create a pull request, and go to the root of the copied directory on your command line. 
 
-`
+```
 $cd GroceryApp
 $expo start
-`
+```
