@@ -17,13 +17,13 @@ If you have the Node 10 LTS or greater installed on your machine. kindly move to
 
 Install Expo CLI by running the following command:
 
-`$npm install -g expo-cli`
+`$ npm install -g expo-cli`
 
 **STEP 3 - Running the React Native application on Expo**
 
 Create a pull request, and go to the root of the copied directory on your command line. 
 
 ```
-$cd GroceryApp
-$expo start
+$ cd GroceryApp
+$ expo start
 ```
