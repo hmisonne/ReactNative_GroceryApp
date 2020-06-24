@@ -7,7 +7,7 @@ It is built with React Native and is only running on Android devices and Android
 
 ## Screens
 
-This application has 4 main screens that users can navigate to from the Main Screen:
+This application has 4 main screens that users can navigate to from the Home Screen:
 
 ### Shopping List
 
@@ -73,12 +73,8 @@ From this screen, users have 2 options:
 ## Data 
 
 This app is using 4 different type of data:
-	- food: to manage the items added to a specific Food Category List
-	- groceryList: to manage the lists of groceries saved
-	- recipe: to manage the lists of recipes saved
-	- ingredient: to manage the ingredients fetched by RecipeID from the spoonacular API
 
-1) Food
+- food: to manage the items added to a specific Food Category List
 ```
 [
 	{
@@ -101,8 +97,7 @@ This app is using 4 different type of data:
 ]
 ```
 
-2) Grocery List
-
+- groceryList: to manage the lists of groceries saved
 ```
 [
 	{
@@ -132,8 +127,7 @@ This app is using 4 different type of data:
 ]
 ```
 
-3) Recipe
-
+- recipe: to manage the lists of recipes saved
 ```
 [	
 	{
@@ -178,8 +172,7 @@ This app is using 4 different type of data:
 ]
 ```
 
-4) Ingredients
-
+- ingredient: to manage the ingredients fetched by RecipeID from the spoonacular API
 ```
 [
     {
@@ -234,6 +227,6 @@ $ expo start
 
 From there, scan the QR barcode with your expo app on your android device or click "a" to run on your android studio emulator
 
-## Issues running the app**
+## Issues running the app
 
 You may want to check this [stack overflow discussion](https://stackoverflow.com/questions/58120990/how-to-resolve-the-error-on-react-native-start/58122821#58122821) if you are having an error with metro-config while running `expo start`
