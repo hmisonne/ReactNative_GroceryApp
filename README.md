@@ -1,8 +1,8 @@
 # GroceryApp
 
- This app allows user to add products to their shopping list and browse recipe. 
+This app allows user to add products to their shopping list and browse recipe. 
 
- It is built with React Native and is only running on Android devices and Android emulators at the moment.
+It is built with React Native and is only running on Android devices and Android emulators at the moment.
 
 
 ## Screens
@@ -69,14 +69,152 @@ From this screen, users have 2 options:
 
 2) Delete this Recipe
 
-## Prerequisites
+
+## Data 
+
+This app is using 4 different type of data:
+	- food: to manage the items added to a specific Food Category List
+	- groceryList: to manage the lists of groceries saved
+	- recipe: to manage the lists of recipes saved
+	- ingredient: to manage the ingredients fetched by RecipeID from the spoonacular API
+
+1) Food
+```
+[
+	{
+		name: "Strawberries", 
+		key: 101, 
+		checked: false, 
+		unit: 1,
+		amount: lb,
+		type: 'Fruits'
+	},
+	{
+		name: "Turkey", 
+		key: 102, 
+		checked: true, 
+		unit: 1,
+		amount: ct,
+		type: 'Meat'
+	},
+
+]
+```
+
+2) Grocery List
+
+```
+[
+	{
+		name: "Thanksgiving Dinner",
+		description: "Feast for 2 ppl", 
+		key: 2002,
+		food: [
+			{
+				name: "Strawberries", 
+				key: 101, 
+				checked: false, 
+				unit: 1,
+				amount: lb,
+				type: 'Fruits'
+			},
+			{
+				name: "Turkey", 
+				key: 102, 
+				checked: true, 
+				unit: 1,
+				amount: ct,
+				type: 'Meat'
+			},
+
+		], 
+	}
+]
+```
+
+3) Recipe
+
+```
+[	
+	{
+		key: 3001,
+		recipeName: 'Spicy Paella',
+		recipeID: 4050,
+		recipeInstructions: [
+			{
+				number:1,
+				step:"Preheat the oven to 200 degrees F."
+				key: 1,
+			},
+			{
+				number: 2,
+				step: "Whisk together rice and spices",
+				key: 2,
+			},
+
+		],
+		recipeingredients: [
+			{
+		        key: 22, 
+		        name: 'Rice', 
+		        type: 'custom',
+		        amount: 2,
+		        unit: 'lb',
+		        checked: false,
+		        ref: 'Spicy Paella',
+	         },
+			{
+				key: 23, 
+				name: 'Paprika', 
+				type: 'custom',
+				amount: 1,
+				unit: 'ct',
+				checked: false,
+				ref: 'Spicy Paella',
+			}
+		]
+
+	}
+]
+```
+
+4) Ingredients
+
+```
+[
+    {
+        "amount": {
+            "us": {
+                "unit": "cups",
+                "value": 1.5
+            }
+        },
+        "image": "blueberries.jpg",
+        "name": "blueberries"
+    },
+]
+```
+
+
+### Redux
+
+To manage the state of the application, I used Redux and I created 4 reducers that manage each data type allows user to perform Create, Read, Update and Delete actions.
+
+
+### Spoonacular API 
+
+To retrieve the data for recipe lists based on user input, recipe ingredients and instructions, I used [spoonacular API](https://spoonacular.com/food-api)
+
+
+## How to run the app
+
+### Prerequisites
 
 - Node, click [here](https://nodejs.org/en/) to download node
 - Android Emulator, click [here](https://developer.android.com/studio) to download android studio
 - Or expo Installed on your android device. [Expo App](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_US)
 
-## How to run the app
-
+### Instructions
 
 **STEP 1 - Install the Expo CLI**
 
@@ -84,7 +222,7 @@ Install Expo CLI by running the following command:
 
 `$ npm install -g expo-cli`
 
-**STEP 3 - Running the React Native application on Expo**
+**STEP 2 - Running the React Native application on Expo**
 
 Create a pull request, go to the root of the copied directory on your command line, and install Node package dependencies
 
@@ -96,5 +234,6 @@ $ expo start
 
 From there, scan the QR barcode with your expo app on your android device or click "a" to run on your android studio emulator
 
-**Issues running the app**
-[nodejs](https://stackoverflow.com/questions/58120990/how-to-resolve-the-error-on-react-native-start/58122821#58122821)
+## Issues running the app**
+
+You may want to check this [stack overflow discussion](https://stackoverflow.com/questions/58120990/how-to-resolve-the-error-on-react-native-start/58122821#58122821) if you are having an error with metro-config while running `expo start`
