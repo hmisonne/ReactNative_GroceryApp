@@ -1,8 +1,18 @@
 # GroceryApp
 
-This app allows user to add products to their shopping list and browse recipe. 
+This is my very first mobile app that I developed from scratch with React Native! 
+As a first project, I decided to build a Grocery List to add products to a shopping list and toggle a button to mark items as added to cart. I thought about this idea as I was getting bored of sending grocery list by text to my partner which was redundant, sometimes confusing, and not very organized! 
+The idea of this app was to solve this issue and also provide advanced features such as browsing recipes and being able to add all the ingredients to the grocery list.
 
-It is built with React Native and is only running on Android devices and Android emulators at the moment.
+This project covers the main features of a React Native app: 
+- Use of React Components
+- Navigation between screens
+- Ability to Create, Read, Update and Delete element
+- State Management
+- Retrieve and process data from API call
+- Use of Redux : Reducer, Action, Store
+
+It is currently only able to run on Android devices and Android emulators.
 
 
 ## Screens
@@ -10,6 +20,8 @@ It is built with React Native and is only running on Android devices and Android
 This application has 4 main screens that users can navigate to from the Home Screen:
 
 ### Shopping List
+
+![Shopping List demo](demo/FoodCat.gif)
 
 Users can select a spectific Food Category (Fruits, Veggies, Dairy, Grains, Meat and Custom) to build their list and see how many items are in each category and see the status of each list:
 - white: list not started
@@ -34,6 +46,8 @@ From this screen, users have 3 options:
 
 ### My Saved Grocery List
 
+![GroceryList demo](demo/GroceryList.gif)
+
 Shows the list of Grocery List saved.
 
 From this screen, users have 2 options:
@@ -44,6 +58,8 @@ From this screen, users have 2 options:
 2) Delete this list
 
 ### Find A Recipe
+
+![Recipes demo](demo/Recipes.gif)
 
 Allows users to browse recipe based on the name of a recipe.
 After entering the name of a recipe, the user will see a list of Recipe names with the number of serving and preparation time.
