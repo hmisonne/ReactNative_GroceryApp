@@ -21,12 +21,15 @@ This application has 4 main screens that users can navigate to from the Home Scr
 
 ### Shopping List
 
-![Shopping List demo](demo/FoodCat.gif)
+<img align="right" src="demo/FoodCat.gif" alt="FoodCat demo" width="199" height="419">
 
 Users can select a spectific Food Category (Fruits, Veggies, Dairy, Grains, Meat and Custom) to build their list and see how many items are in each category and see the status of each list:
-- white: list not started
-- green: all items have been marked as "checked"
-- orange: some items are still "unchecked"
+
+<ul>
+	<li>white: list not started</li>
+	<li>green: all items have been marked as "checked"</li>
+	<li>orange: some items are still "unchecked"</li>
+</ul>
 
 From this screen, users have 3 options:
 
@@ -44,9 +47,8 @@ From this screen, users have 3 options:
 3) Save this list
 	Allow users to enter a Name and Description for their current Shopping List and add it to My Saved Grocery List screen
 
+	
 ### My Saved Grocery List
-
-![GroceryList demo](demo/GroceryList.gif)
 
 Shows the list of Grocery List saved.
 
@@ -54,12 +56,14 @@ From this screen, users have 2 options:
 
 1) Visualize the content of a particular list
 	With the option to load this list to the "Shopping List" screen
-
+	Once clicked, it will populate the Grocery List with the items saved on the list.
+	
 2) Delete this list
+
 
 ### Find A Recipe
 
-![Recipes demo](demo/Recipes.gif)
+<img align="right" src="demo/Recipes.gif" alt="Recipes demo" width="199" height="419">
 
 Allows users to browse recipe based on the name of a recipe.
 After entering the name of a recipe, the user will see a list of Recipe names with the number of serving and preparation time.
@@ -82,6 +86,7 @@ From this screen, users have 2 options:
 
 1) Visualize the content of a recipe (ingredients and instructions)
 	With the option to load this list to the "Shopping List" screen
+	
 
 2) Delete this Recipe
 
@@ -212,16 +217,96 @@ To manage the state of the application, I used Redux and I created 4 reducers th
 
 ### Spoonacular API 
 
-To retrieve the data for recipe lists based on user input, recipe ingredients and instructions, I used [spoonacular API](https://spoonacular.com/food-api)
+I chose this particular API as it provides access to over 360K recipes and can be used for free as long as it does not go over the daily allowance of calls.
+For more information, visit their website: [Spoonacular API](https://spoonacular.com/food-api).
 
+#### fetchRecipes
+
+To return a list of recipes starting with an input I used this endpoint:
+```
+https://api.spoonacular.com/recipes/search?query=${input}&apiKey=${apikey}
+```
+which returns a list of recipes with the following information:
+
+```json
+{
+	"results":[{	
+			"id":211533,
+			"title":"Spicy clam & pork paella",
+			"readyInMinutes":60,
+			"servings":6,
+			"sourceUrl":"https://www.bbcgoodfood.com/recipes/5392/spicy-clam-and-pork-paella",
+			"openLicense":0,"image":"Spicy-clam---pork-paella-211533.jpg"
+		}]
+}
+
+```
+
+#### fetchRecipeDetails
+
+To get the ingredients for a particular recipe, I used this endpoint:
+```
+https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=${apikey}
+```
+which returns a list of ingredients with the following information:
+
+```json
+{
+	"ingredients":[
+		{
+			"name":"olive oil",
+			"image":"olive-oil.jpg",
+			"amount":{"metric":{"value":4.0,"unit":"Tbsps"},
+			"us":{"value":4.0,"unit":"Tbsps"}}},
+		{
+			"name":"pork",
+			"image":"pork-tenderloin-raw.png",
+			"amount":{"metric":{"value":400.0,"unit":"g"},
+			"us":{"value":14.109,"unit":"oz"}}},
+	]
+}
+```
+
+#### fetchRecipeInstructions
+
+To get the instructions for a particular recipe, I used this endpoint:
+```
+https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=${apikey}
+```
+which returns a list of steps with the following information:
+
+```json
+[{
+	"steps":[{
+		"number":1,
+		"step":"Heat half the olive oil in a paella pan or a large frying pan. Tip in the pork and cook for about 5 mins until lightly browned, but not cooked through.",
+		"ingredients":[
+			{"id":4053,"name":"olive oil","localizedName":"olive oil","image":"olive-oil.jpg"},
+			{"id":10010219,"name":"pork","localizedName":"pork","image":"pork-tenderloin-raw.png"
+		}],
+		"equipment":[
+			{"id":404645,"name":"frying pan","localizedName":"frying pan","image":"pan.png"}],
+		"length":{"number":5,"unit":"minutes"}
+		},
+		{
+		"number":2,
+		"step":"Remove from the pan, then set aside on a plate.",
+		"ingredients":[],
+		"equipment":[{"id":404645,"name":"frying pan","localizedName":"frying pan","image":"pan.png"}]
+		},
+	]}
+}]
+```
 
 ## How to run the app
 
 ### Prerequisites
 
 - Node, click [here](https://nodejs.org/en/) to download node
-- Android Emulator, click [here](https://developer.android.com/studio) to download android studio
-- Or expo Installed on your android device. [Expo App](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_US)
+- Android Emulator:
+	- Click [here](https://developer.android.com/studio) to download android studio 
+	- Or Install Expo directly on your android device: [Expo App](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_US)
+- Spoonacular free account to generate your own api Key: click [here](https://spoonacular.com/food-api)
 
 ### Instructions
 
