@@ -294,7 +294,7 @@ which returns a list of steps with the following information:
 		"equipment":[{"id":404645,"name":"frying pan","localizedName":"frying pan","image":"pan.png"}]
 		},
 	]}
-}]
+]
 ```
 
 ## How to run the app
