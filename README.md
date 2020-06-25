@@ -91,7 +91,7 @@ From this screen, users have 2 options:
 This app is using 4 different type of data:
 
 - food: to manage the items added to a specific Food Category List
-```
+```javascript
 [
 	{
 		name: "Strawberries", 
@@ -114,7 +114,7 @@ This app is using 4 different type of data:
 ```
 
 - groceryList: to manage the lists of groceries saved
-```
+```javascript
 [
 	{
 		name: "Thanksgiving Dinner",
@@ -144,7 +144,7 @@ This app is using 4 different type of data:
 ```
 
 - recipe: to manage the lists of recipes saved
-```
+```javascript
 [	
 	{
 		key: 3001,
@@ -153,7 +153,7 @@ This app is using 4 different type of data:
 		recipeInstructions: [
 			{
 				number:1,
-				step:"Preheat the oven to 200 degrees F."
+				step:"Preheat the oven to 200 degrees F.",
 				key: 1,
 			},
 			{
@@ -189,7 +189,7 @@ This app is using 4 different type of data:
 ```
 
 - ingredient: to manage the ingredients fetched by RecipeID from the spoonacular API
-```
+```javascript
 [
     {
         "amount": {
