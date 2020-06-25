@@ -1,8 +1,8 @@
 # GroceryApp
 
 This is my very first mobile app that I developed from scratch with React Native! 
-As a first project, I decided to build a Grocery List to add products to a shopping list and toggle a button to mark items as added to cart. I thought about this idea as I was getting bored of sending grocery list by text to my partner which was redundant, sometimes confusing, and not very organized! 
-The idea of this app was to solve this issue and also provide advanced features such as browsing recipes and being able to add all the ingredients to the grocery list.
+As a first project, I decided to build a Grocery List to add products to a shopping list and toggle a button to mark items as added to cart. I thought about this idea as I was getting tired of sending grocery list by text to my partner which was repetitive, sometimes confusing, and not very organized! 
+The idea of this app was to solve this issue and also to provide advanced features such as browsing recipes and being able to add all the ingredients to the grocery list.
 
 This project covers the main features of a React Native app: 
 - Use of React Components
@@ -12,8 +12,7 @@ This project covers the main features of a React Native app:
 - Retrieve and process data from API call
 - Use of Redux : Reducer, Action, Store
 
-It is currently only able to run on Android devices and Android emulators.
-
+/!\ It can only be run on Android devices and Android emulators. /!\
 
 ## Screens
 
